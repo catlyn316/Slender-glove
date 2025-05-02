@@ -116,10 +116,16 @@ EgglerButtons[2].MouseButton1Click:Connect(function()
 	local balloon = workspace:FindFirstChild("Lobby") and workspace.Lobby:FindFirstChild("Balloony")
 	if balloon and balloon:FindFirstChild("ClickDetector") then
 		fireclickdetector(balloon.ClickDetector)
-		task.wait(0.5) -- 稍微等一下，確保點擊成功
-		LocalPlayer.Character:MoveTo(Vector3.new(123, 250, 0))
 	end
+
+	local defaultIsland = workspace:FindFirstChild("Arena") and workspace.Arena:FindFirstChild("default island")
+	if defaultIsland then
+		defaultIsland:Destroy()
+	end
+
+	LocalPlayer.Character:MoveTo(Vector3.new(123, 258, 6))
 end)
+
 
 
 -- 第三個按鈕：傳送到樹前
