@@ -113,7 +113,7 @@ end)
 
 -- 第二個按鈕：傳送到錄帶機（需裝備氣球）
 EgglerButtons[2].MouseButton1Click:Connect(function()
-fireclickdetector(workspace.Lobby["Ballony"].ClickDetector)
+fireclickdetector(workspace.Lobby["Balloony"].ClickDetector)
 	LocalPlayer.Character:MoveTo(Vector3.new(123, 253, 0))
 end)
 
