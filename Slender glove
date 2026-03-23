@@ -100,7 +100,7 @@ end
 -- 按鈕功能實作
 local EgglerButtons = {
 	createButton("傳送到hitman", 1, EgglerScroll, 35),
-	createButton("傳送到錄帶機(要先裝備氣球)", 2, EgglerScroll, 35),
+	createButton("顯示神秘密碼", 2, EgglerScroll, 35),
 	createButton("傳送到樹前(要在輸入密碼後樹才會顯示)", 3, EgglerScroll, 35),
 	createButton("刪除slender man(好像沒啥用)", 4, EgglerScroll, 35),
 	createButton("獲取紙頁", 5, EgglerScroll, 35),
@@ -111,19 +111,26 @@ EgglerButtons[1].MouseButton1Click:Connect(function()
 	LocalPlayer.Character:MoveTo(Vector3.new(17895, -130, -3521))
 end)
 
--- 第二個按鈕：傳送到錄帶機（需裝備氣球）
+-- 第二個按鈕：顯示神秘密碼（原傳送到錄帶機功能已注釋）
 EgglerButtons[2].MouseButton1Click:Connect(function()
-	local balloon = workspace:FindFirstChild("Lobby") and workspace.Lobby:FindFirstChild("Balloony")
-	if balloon and balloon:FindFirstChild("ClickDetector") then
-		fireclickdetector(balloon.ClickDetector)
+	local code = LocalPlayer:GetAttribute("MysteriousHiddenCode")
+	if code ~= nil then
+		EgglerButtons[2].Text = "神秘密碼：" .. tostring(code)
+	else
+		EgglerButtons[2].Text = "神秘密碼：（未找到）"
 	end
 
-	local defaultIsland = workspace:FindFirstChild("Arena") and workspace.Arena:FindFirstChild("default island")
-	if defaultIsland then
-		defaultIsland:Destroy()
-	end
-
-	LocalPlayer.Character:MoveTo(Vector3.new(123, 258, 6))
+	-- [[ 原傳送到錄帶機功能（注釋保留）
+	-- local balloon = workspace:FindFirstChild("Lobby") and workspace.Lobby:FindFirstChild("Balloony")
+	-- if balloon and balloon:FindFirstChild("ClickDetector") then
+	-- 	fireclickdetector(balloon.ClickDetector)
+	-- end
+	-- local defaultIsland = workspace:FindFirstChild("Arena") and workspace.Arena:FindFirstChild("default island")
+	-- if defaultIsland then
+	-- 	defaultIsland:Destroy()
+	-- end
+	-- LocalPlayer.Character:MoveTo(Vector3.new(123, 258, 6))
+	-- ]]
 end)
 
 
